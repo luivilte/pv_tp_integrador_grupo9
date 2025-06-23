@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleFavorite } from '../redux/productsSlice';
+import { toggleFavorite } from '../../redux/ProductsSlice';
 
 function ProductCard({ product }) {
   const dispatch = useDispatch();
