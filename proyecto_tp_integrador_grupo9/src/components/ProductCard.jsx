@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardMedia, CardContent, Typography, IconButton, CardActions, Button } from '@mui/material';
 import { Favorite, FavoriteBorder } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleFavorite } from '../features/favorites/favoritesSlice';
+import { toggleFavorite } from '../redux/favoritesSlice';
 import { Link } from 'react-router-dom';
 
 const ProductCard = ({ product }) => {
