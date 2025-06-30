@@ -1,7 +1,16 @@
 
 import React from 'react';
-import { Card, CardMedia, CardContent, Typography, IconButton, CardActions, Button } from '@mui/material';
-import { Favorite, FavoriteBorder } from '@mui/icons-material';
+import {
+  Card,
+  CardMedia,
+  CardContent,
+  Typography,
+  IconButton,
+  CardActions,
+  Button,
+  Box,
+} from '@mui/material';
+import { Favorite, FavoriteBorder, Edit } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleFavorite } from '../redux/favoritesSlice';
 import { Link } from 'react-router-dom';
@@ -35,12 +44,29 @@ const ProductCard = ({ product }) => {
           ${product.price}
         </Typography>
       </CardContent>
-      <CardActions>
-        <IconButton onClick={handleToggleFavorite} color="secondary">
-          {isFavorite ? <Favorite /> : <FavoriteBorder />}
-        </IconButton>
-        <Button size="small" component={Link} to={`/producto/${product.id}`}>
-          Ver más
+
+      <CardActions sx={{ justifyContent: 'space-between' }}>
+        <Box>
+          <IconButton onClick={handleToggleFavorite} color="secondary">
+            {isFavorite ? <Favorite /> : <FavoriteBorder />}
+          </IconButton>
+          <Button
+            size="small"
+            component={Link}
+            to={/producto/${product.id}}
+          >
+            Ver más
+          </Button>
+        </Box>
+
+        <Button
+          size="small"
+          variant="outlined"
+          startIcon={<Edit />}
+          component={Link}
+          to={/editar/${product.id}}
+        >
+          Editar
         </Button>
       </CardActions>
     </Card>
