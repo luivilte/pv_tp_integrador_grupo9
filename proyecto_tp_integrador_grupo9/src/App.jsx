@@ -1,15 +1,14 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
-
-import PrivateRoute from './components/PrivateRoute';
-import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Favorites from './pages/Favorites';
 import ProductDetail from './pages/ProductDetail';
 import ProductForm from './pages/ProductForm';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import PrivateRoute from './components/PrivateRoute';
+import Navbar from './components/Navbar';
 import { fetchProducts } from './redux/ProductsSlice';
 
 function App() {
