@@ -1,26 +1,43 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProducts } from '../redux/ProductsSlice';
-import ProductCard from '../components/ProductCard';
+import { fetchProducts } from '../redux/ProductsSlice';
+import ProductList from '../components/ProductList';
+import { Typography, CircularProgress, Box, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
-function Home() {
+const Home = () => {
   const dispatch = useDispatch();
-  const { items: products, loading, error } = useSelector((state) => state.products);
+  const { products, status, error } = useSelector(state => state.products);
 
   useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
+    if (status === 'idle') {
+      dispatch(fetchProducts());
+    }
+  }, [status, dispatch]);
 
-  if (loading) return <p>Cargando productos...</p>;
-  if (error) return <p>{error}</p>;
+  let content;
+
+  if (status === 'loading') {
+    content = (
+      <Box display="flex" justifyContent="center" mt={4}>
+        <CircularProgress />
+      </Box>
+    );
+  } else if (status === 'succeeded') {
+    content = <ProductList products={products} />;
+  } else if (status === 'failed') {
+    content = <Typography color="error">Error: {error}</Typography>;
+  }
 
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-      {products.map(product => (
-        <ProductCard key={product.id} product={product} />
-      ))}
-    </div>
+    <Box>
+      <Box display="flex" justifyContent="space-between" alignItems="center" my={2}>
+        <Typography variant="h4">Listado de Productos</Typography>
+        
+      </Box>
+      {content}
+    </Box>
   );
-}
+};
 
 export default Home;
