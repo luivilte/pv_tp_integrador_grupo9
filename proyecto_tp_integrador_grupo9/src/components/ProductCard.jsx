@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   Card,
@@ -53,7 +52,7 @@ const ProductCard = ({ product }) => {
           <Button
             size="small"
             component={Link}
-            to={/producto/${product.id}}
+            to={`/producto/${product.id}`}
           >
             Ver más
           </Button>
@@ -64,7 +63,7 @@ const ProductCard = ({ product }) => {
           variant="outlined"
           startIcon={<Edit />}
           component={Link}
-          to={/editar/${product.id}}
+          to={`/editar/${product.id}`}
         >
           Editar
         </Button>
@@ -74,6 +73,3 @@ const ProductCard = ({ product }) => {
 };
 
 export default ProductCard;
-
-
-
