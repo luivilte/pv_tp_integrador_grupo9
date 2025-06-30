@@ -1,4 +1,3 @@
-
 import { createSlice } from '@reduxjs/toolkit';
 
 const sessionUser = JSON.parse(localStorage.getItem('sessionUser')) || null;
